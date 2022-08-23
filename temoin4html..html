@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Je suis témoin</title>
+    <meta charset="UTF-8">
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div align="center">
+        <br>
+        <img src="pizza.png" alt="Logo de Radio-Canada" style="width:100px;height:100px;border:0;">
+        <h1>Je suis témoin</h1>
+        Nous vous remercions d'avoir pris le temps de partager votre témoignage.<br>
+        Nous entrerons en contact avec vous en cas de besoin.<br>
+        <br>
+        <input id="index" type="button" value="Soumettre un nouveau témoignage" style="color:#FFFFFF;background:#dd0000" onclick="ReturnToForm()"><br>
+        <br>
+        <a href="http://ici.radio-canada.ca" style="color:#DD0000">Retourner au site de Radio-Canada.ca</a>
+    </div>
+</body>
+</html>  
+
+<script>
+    function ReturnToForm()
+    {
+        window.location = 'multimedia.html';
+    }
+    <div id="form" align="center">
+        <br>
+        <img src="pizza.png" alt="Logo de Radio-Canada" style="width:100px;height:100px;border:0;">
+        <h1>Je suis témoin</h1>
+        <h2>Vos coordonnées</h2>
+        <form autocomplete="on">
+            <br>
+            Les champs marqués d'un<span style="color:#DD0000"> * </span>sont obligatoires.<br>
+            <br>
+            <label for="firstname">
+                <strong>Prénom :</strong><span style="color:#DD0000"> *</span><br>
+                <input type="text" name="firstname" id="firstname">
+                <div id="messageErrorFirstname" class="messageErrorContainer" style="display:none"></div>
+            </label>
+            <br>
+            <label for="lastname">
+                <strong>Nom :</strong><span style="color:#DD0000"> *</span><br>
+                <input type="text" name="lastname" id="lastname">
+                <div id="messageErrorLastname" class="messageErrorContainer" style="display:none"></div>
+            </label>
+            <br>
+            <label for="email">
+                <strong>Courriel :</strong><br>
+                <input type="email" name="email" id="email"><br>
+            </label>
+            <br />
+            <label for="phone">
+                <strong>Téléphone :</strong><span style="color:#DD0000"> *</span><br>
+                <input type="phone" name="phone" id="phone">
+                <div id="messageErrorPhone" class="messageErrorContainer" style="display:none"></div>
+            </label>
+            <br><br>
+
+            <input id="btnUploadFile" alt="Envoyer le fichier" type="button" value="Soumettre" style="color:#FFFFFF;background:#dd0000" onclick="SendForm()"><br>
+        </form>
+    </div>
+    </div>
+ 
+
+<style>
+    .messageErrorContainer {
+        color: white;
+        background-color: #009CDE;
+        font-size: 22px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top:15px;
+    }
+</style>
+
+
+<script>
+
+    function SendForm()
+    {
+        if(ValidForm())
+        {
+            window.location = "confirmation.html";
+        }
+    }
+
+    function ValidForm()
+    {
+        document.getElementById('messageErrorFirstname').style.display = 'none';
+        document.getElementById('messageErrorLastname').style.display = 'none';
+        document.getElementById('messageErrorPhone').style.display = 'none';
+
+        if (document.getElementById('firstname').value == '')
+        {
+            document.getElementById('messageErrorFirstname').style.display = 'block';
+            document.getElementById('messageErrorFirstname').innerHTML = 'Merci de saisir votre prénom';
+            document.getElementById('firstname').focus();
+            return false;
+        }
+
+        if (document.getElementById('lastname').value == '') {
+            document.getElementById('messageErrorLastname').style.display = 'block';
+            document.getElementById('messageErrorLastname').innerHTML = 'Merci de saisir votre nom';
+            document.getElementById('lastname').focus();
+            return false;
+        }
+
+        if (document.getElementById('phone').value == '') {
+            document.getElementById('messageErrorPhone').style.display = 'block';
+            document.getElementById('messageErrorPhone').innerHTML = 'Merci de rentrer votre téléphone';
+            document.getElementById('phone').focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    function GetCookie(c_name) {
+        var i, x, y, ARRcookies = document.cookie.split(";");
+        for (i = 0; i < ARRcookies.length; i++) {
+            x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+            y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+            x = x.replace(/^\s+|\s+$/g, "");
+            if (x == c_name) {
+                return unescape(y);
+            }
+        }
+    };
+
+</script>
+<div align="center">
+        <br>
+        <a href="multimedia.html">
+            <img src="pizza.png" alt="Logo de Radio-Canada" style="width:100px;height:100px;border:0;">
+        </a>
+        <h1>Je suis témoin</h1>
+        Bienvenue dans l'outil de journalisme citoyen de Radio-Canada.<br>
+        <br>
+        <a href="multimedia.html">
+            <input id="multimedia" alt="Aller au formulaire de soumission" type="button" value="Aller au formulaire" style="color:#FFFFFF;background:#dd0000"><br>
+        </a>
+    </div>
+
+</script>
+<div id="form" align="center">
+        <br>
+        <img src="pizza.png" alt="Logo de Radio-Canada" style="width:100px;height:100px;border:0;">
+        <h1>Je suis témoin</h1>
+
+        <h2>Envoyez-nous une photo, une vidéo ou un fichier audio</h2>
+        <label for="fileUpload" />
+
+        <input type="file" id="fileUpload" name="image" accept="image/*" capture style="display:none" onchange="UploadImage()" />
+        <button class="btnPhoto" id="fileUpload" alt="Soumettre une photo" style="cursor:pointer" aria-label="Ajouter une image" onclick="OpenPopUp()"></button><span class="spacer" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+        <input type="file" id="fileUpload" name="video" accept="video/*" capture style="display:none" />
+        <button class="btnVideo" id="fileUpload" alt="Soumettre une photo" style="cursor:pointer" aria-label="Ajouter une image" onclick="OpenPopUp()"></button><span class="spacer" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+        <input type="file" id="fileUpload" name="audio" accept="audio/*" capture style="display:none" />
+        <button class="btnAudio" id="fileUpload" alt="Soumettre une photo" style="cursor:pointer" aria-label="Ajouter une image" onclick="OpenPopUp()"></button><span class="spacer" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <br>
+        <br />
+        <div id="messageErrorImage" class="messageErrorContainer" style="display:none"></div>
+        <br />
+        <img src="" id="imageUpload" width="100" style="display:none" />
+
+        <img src="pizza-chargement.gif" style="display:none" id="chargement" />
+        <h2>Racontez-nous ce qui se passe</h2>
+
+        <label for="description">
+            <strong>Qui? Quoi? Où? Quand? Comment? Pourquoi?</strong><br>
+
+            <textarea name="subject" id="subject" cols="50" rows="5"></textarea>
+            <div id="messageErrorDescription" class="messageErrorContainer" style="display:none"></div>
+        </label>
+        <br />
+        <input id="btnUploadFile" alt="Envoyer le fichier" type="button" value="Finaliser le témoignage" style="color:#FFFFFF;background:#dd0000" onclick="SendForm()"><br>
+    </div>
+</body>
+</html>
+
+<style>
+    .messageErrorContainer
+    {
+        color:white;
+        background-color:#009CDE;
+        font-size:22px;
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-left:10px;  
+        padding-right:10px;
+    }   
+
+    .btnPhoto{
+        background: url('photo2.png');
+        width:80px;
+        height:69px;
+        border:none;
+        padding-left:15px;
+        padding-right:15px;
+    }
+
+    .btnVideo{
+        background: url('video2.png');
+        width:80px;
+        height:78px;
+        border:none;
+        padding-right:15px;
+        padding-left:15px;
+    }
+
+    .btnAudio{
+        background: url('audio2.png');
+        width:39px;
+        height:69px;
+        border:none;
+        padding-right:15px;
+        padding-left:15px;
+    }
+
+   .focusable:focus {
+    border: 5px solid #900;
+}
+
+  
+</style>
+
+<script>
+    function OpenPopUp()
+    {
+        jQuery("#fileUpload").click();
+    }
+
+    function SendForm()
+    {
+        if (ValidForm())
+        {
+            var imagePath = jQuery("#imageUpload")[0].src;
+            var description = jQuery("#subject")[0].value;
+
+            SetCookie("TemoignageImagePath", imagePath);
+            SetCookie("TemoignageDescription", description);
+
+            window.location = "coordos.html";
+        }        
+    }
+
+    function ValidForm()
+    {
+        document.getElementById('messageErrorImage').style.display = 'none';
+        document.getElementById('messageErrorDescription').style.display = 'none';
+
+        if (jQuery("#fileUpload").get(0).files.length  == 0)
+        {
+            
+            document.getElementById('messageErrorImage').style.display = 'block';
+            document.getElementById('messageErrorImage').innerHTML = 'Témoignage manquant: SVP joindre votre témoignage';
+
+            return false;
+        }
+
+        if (document.getElementById('subject').value == '') {
+
+            document.getElementById('messageErrorDescription').style.display = 'block';
+            document.getElementById('messageErrorDescription').innerHTML = 'Intitulé  manquant: SVP de décrire brièvement votre témoignage';
+
+            return false;
+        }
+
+        return true;
+    }
+
+    function UploadImage()
+    {
+        document.getElementById('messageErrorImage').style.display = 'none';
+        document.getElementById('messageErrorDescription').style.display = 'none';
+        document.getElementById('chargement').style.display = 'block';
+        document.getElementById('messageErrorImage').style.display = 'none';
+
+        var data = new FormData();
+
+        var files = jQuery("#fileUpload").get(0).files;
+
+        if (files.length > 0) {
+            data.append("avatar", files[0]);
+        }
+
+        var ajaxRequest = jQuery.ajax({
+            type: "POST",
+            url: "https://dev-rli-services.radio-canada.ca/id/v3/avatar/upload-avatar?rcid=46CA97E7-44CA-4176-843D-2CD1B640DB41",
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+                jQuery("#imageUpload")[0].src = data;
+                //jQuery("#imageUpload")[0].show();
+                document.getElementById('imageUpload').style = "display:block";
+                document.getElementById('chargement').style.display = 'none';
+            },
+            error: function (data) {
+                //gérer les cas d'erreurs
+                document.getElementById('chargement').style.display = 'none';
+                document.getElementById('messageErrorImage').style.display = 'block';
+                document.getElementById('messageErrorImage').innerHTML = 'Une erreur est survenue. Veuillez réessayer svp.';
+            }
+        });
+
+        ajaxRequest.done(function (xhr, textStatus) {
+            // Do other operation
+        });
+
+
+    }
+
+    function SetCookie(name, value) {
+        path = '/';
+        domain = ''
+        secondes = 24 * 60 * 60 * 1000 * 14; //2 semaines
+        var today = new Date();
+        today.setTime(today.getTime());
+        var expires = new Date(today.getTime() + (secondes));
+        var secure = "";
+
+
+        document.cookie = name + "=" + value +
+        ((expires) ? ";expires=" + expires.toGMTString() : "") +
+        ((path) ? ";path=" + path : "") +
+        ((domain) ? ";domain=" + domain : "") +
+        ((secure) ? ";secure" : "");
+    };
+
+</script>  
+</body>
+</html> 
